@@ -1,19 +1,20 @@
 import { useState } from "react"
-function Form({handleFirst, handleSecond, handleSubmit, display}){
-
-  
-  
+function Form({firstInput, secondInput, handleFirstInput, handleSecondInput, handleDisplay, display}){
+const myArray = display.map((inputs, index) => {
+return <li key = {index}> {inputs}</li>
+})
 return(
-    <form onSubmit={handleSubmit}>
-        <input type = "text"
-        onChange={handleFirst}
-        ></input>
-        <input type = "text"
-        onChange={handleSecond}
-        ></input>
-        <button type = "submit">Click</button>
-        <h1> {display}</h1>
+<div>
+    <form onSubmit={handleDisplay}>
+        <input type = "text" onChange={handleFirstInput} ></input>
+        <input type = "text" onChange={handleSecondInput}></input>
+        <button>Submit</button>
     </form>
+    <ul>
+    {myArray}
+   </ul>
+
+</div>
 )
 }
 export default Form

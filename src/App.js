@@ -1,31 +1,32 @@
 import Form from "./Form"
 import {useState} from "react"
 function App() {
-  const [firstInput, setFirstInput] = useState("")
-  const [secondInput, setSecondInput] = useState("")
-  const [display, setDisplay] = useState("")
-  console.log(display)
-  function handleFirst(e){
-    setFirstInput(e.target.value)
-  }
-  function handleSecond(e){
-    setSecondInput(e.target.value)
 
-  }
+  const [inputOne, setInputOne] = useState("")
+  const [inputTwo, setInputTwo] = useState("")
+  const [display, setDisplay] = useState([])
 
-  const fullName = `${firstInput} ${secondInput}`
-  function handleSubmit(e){
+  function handleInputOne(e){
+  setInputOne(e.target.value)
+  }
+  function handleInputTwo(e){
+  setInputTwo(e.target.value)
+  }
+  const fullInput = inputOne + " " + inputTwo
+  function handleDisplay(e){
   e.preventDefault()
-  setDisplay(fullName)
+  setDisplay([...display, fullInput])
   }
-
+  console.log(display)
   return (
-    <div className="App">
-    <h1>Forms</h1>
-    < Form handleFirst = {handleFirst}
-           handleSecond = {handleSecond}
-           handleSubmit = {handleSubmit}
+    <div>
+    <h1>My Form</h1>
+    < Form firstInput = {inputOne}
+           secondInput = {inputTwo}
            display = {display}
+           handleFirstInput = {handleInputOne}
+           handleSecondInput = {handleInputTwo}
+           handleDisplay = {handleDisplay}
     />
     </div>
   );
